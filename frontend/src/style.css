@@ -1,0 +1,1087 @@
+* {
+	margin: 0;
+	box-sizing: border-box;
+	font-family: "Montserrat", sans-serif;
+}
+.srodekekranu a { text-decoration: none; color: inherit; font-weight: bolder; color: dodgerblue; cursor: pointer; transition: all 0.3s ease; }
+.srodekekranu a:hover { letter-spacing: 1px; color: #ddd; }
+@keyframes odslonEkran {
+	0% {
+		height: 100vh;
+		background: rgba(0,0,0,1);
+	}
+	99%{
+		height: 100vh;
+		background: rgba(0,0,0,0);
+	}
+	100%{
+		height: 0;
+	}
+}
+.srodekekranu::after {
+	content: " ";
+	display: block;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 0;
+	animation: odslonEkran 0.5s ease;
+	z-index: 9999;
+}
+#root {
+	width: 100%;
+	min-height: 100vh;
+}
+.nieaktywnyFiltr:hover { filter: grayscale(); }
+.logofirmy { background-size: contain; background-position: center; position: fixed; z-index: 1; top: 10px; right: 10px; width: 100px; height: 100px; background-repeat: no-repeat;}
+.logowanieBg, .tlo {
+	display: flex;
+	width: 100%;
+	height: 100vh;
+	background: url("https://system.thebossspedition.pl/img/systemtlo-opt.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	align-items: center;
+	justify-content: center;
+	z-index: -1;
+}
+.logowanieBg:before { top: 0; left: 0; right: 0; bottom: 0; display: block; background: rgba(0,0,0,0.7); content: ""; z-index: 0; position: absolute; }
+.tlo {
+	position: fixed;
+}
+.logowanie {
+	display: flex;
+	width: 750px;
+	height: 400px;
+	background: #111;
+	box-shadow: 0 0 20px 1px #000;
+	z-index: 2;
+}
+.logowanieLewa {
+	width: 250px;
+	height: 100%;
+	display: flex;
+	padding: 40px;
+	background: #1c1c1c;
+}
+.logowanieLogo {
+	width: 100%;
+	background: url("https://system.thebossspedition.pl/img/logoglowna3.png");
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+.logowaniePrawa {
+	display: flex;
+	flex-grow: 1;
+	height: 100%;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	color: #ccc;
+	text-shadow: 1px 1px 3px #111;
+	padding: 40px;
+}
+.logowaniePrawa h1 {
+	text-transform: uppercase;
+	letter-spacing: 2px;
+}
+.logowaniePrawa h3{
+	letter-spacing: 1px;
+	font-weight: 400;
+	text-align: center;
+	font-size: 0.8rem;
+	width: 250px;
+	margin-top: 5px;
+	margin-bottom: 20px;
+}
+.logowaniePrawa a {
+	text-decoration: none;
+	color: white;
+	font-size: 0.7rem;
+	margin-top: 20px;
+	transition: color 0.4s ease;
+}
+.logowaniePrawa a:hover {
+	color: dodgerblue;
+}
+
+@keyframes pokazSmooth {
+	0% { opacity: 0; }
+	25% { transform: translateX(10px); }
+	50% { transform: translateX(-10px); }
+	75% { transform: translateX(0);}
+	100% { opacity: 1; }
+}
+@keyframes wejscieSmooth {
+	0% { opacity: 0; }
+	100% { opacity: 1; }
+}
+
+.pokazSmooth {
+	animation: pokazSmooth 0.5s ease;
+}
+.wejscieSmooth {
+	animation: wejscieSmooth 0.5s ease;
+}
+.logowaniePrawa h5 { color: crimson; animation: pokazSmooth 0.3s;}
+.logowaniePrawa input {
+	padding: 15px 10px;
+	font-size: 1.1rem;
+	background: #333;
+	color: #ccc;
+	margin: 20px 0 5px;
+	border: 2px solid transparent;
+	outline: none;
+	transition: all 0.4s ease;
+	box-shadow: -2px 2px 10px 1px #111;
+}
+.logowaniePrawa input:focus {
+	border-color: dodgerblue;
+}
+.logowaniePrawa input[type="submit"] {
+	background: crimson;
+	text-shadow: 1px 1px 3px black;
+	color: white;
+	font-size: 0.85rem;
+	font-weight: bold;
+	letter-spacing: 1px;
+	padding: 12px 8px;
+	min-width: 200px;
+	cursor: pointer;
+	text-align: center;
+	text-transform: uppercase;
+}
+.logowaniePrawa input[type="submit"]:focus {
+	border-color: transparent;
+}
+.logowaniePrawa input[type="submit"]:enabled:hover {
+	letter-spacing: 3px;
+	background: rgb(255, 187, 0);
+	background: #000;
+}
+.logowaniePrawa input[type="submit"]:disabled {
+	cursor:default;
+	opacity: 0.3;
+}
+header { position: fixed; z-index: 10;
+	left: 0; top: 0;
+	width: 60px;
+	height: 100vh; background: #181818;
+	color: #bbb;
+	transition: all .8s;
+	border-right: 1px solid #333;
+	box-shadow: 0 0 10px 1px #161616;
+	
+}
+header:hover { width: 200px; }
+nav { width: 100%; height: 100%; flex-direction: column; display: flex; justify-content: space-between; overflow: hidden;}
+nav ul { padding: 0; width: 100%; overflow: hidden; }
+nav li { list-style-type: none;
+	width: 200px;
+	text-decoration: none;
+	overflow: hidden;
+	border-bottom: 1px solid #333;
+}
+nav li a, nav button { display: flex; align-items: center; 
+	padding: 15px 20px; width: 100%;
+	text-decoration: none; color: inherit; overflow: hidden;
+	font-weight: 500; font-size: 1rem;
+	transition: all .4s ease; letter-spacing: -1px;
+}
+nav button { width: 200px; overflow: hidden; background: transparent; outline: none; border: none; border-top: 1px solid #333;}
+nav li:first-child a { padding-top: 25px; }
+nav ul li a.active { color: #fff;}
+nav button:hover, nav li a:hover { background: #161616; color: #ffe000; box-shadow: inset 0 0 5px 1px #040404; cursor: pointer; }
+nav button svg, nav li svg { width: 60px; text-align: center; font-size: 1.6rem; margin-left: -20px; }
+nav li a:hover svg { color: #ffe000; }
+nav li a.active:hover svg { color: inherit; }
+.menu-awatar { width: 100%; height: 60px; background-size: cover !important; }
+@keyframes menuBlink {
+	0% { opacity: 0.2; }
+	33% { opacity: 1; }
+	66% { opacity: 0.2; }
+	100% { opacity: 1; }
+}
+.menu-ilosc {
+	position: absolute;
+    background: crimson;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    transform: translate(10px, 10px);
+	animation: menuBlink 0.5s;
+}
+.srodekekranu, .srodekekranu2 {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px 20px 20px 80px;
+    color: #b7b7b7;
+    background: rgba(0,0,0,0.4);
+}
+.glowna { width: 100%; max-width: 1250px; background: #111; box-shadow: 0 0 20px 5px #111; position: relative;}
+.glownaWiadomosc {
+	display: flex;
+	flex-direction: column;
+	padding: 20px;
+    border-bottom: 1px solid crimson;
+	background: #0e0e0e;
+}
+.glownaWiadomosc h3 {
+    text-align: center;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+    color: #bdbd1a;
+}
+.glownaWiadomosc hr {
+    border-color: darkcyan;
+}
+.glownaWiadomosc span {
+    color: white;
+    text-align: justify;
+    text-align-last: center;
+    margin-top: 20px;
+    color: #c36c00;
+}
+.glownaDol { display: flex; background: #0e0e0e; border-top: 2px solid #181818; padding: 30px 0 50px; justify-content: space-around;}
+.statwlasna, .statfirmowa {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	min-width: 250px;
+	max-width: 520px;
+	width: 80%;
+    flex-grow: 1;
+}
+.statystyka:last-child { margin-left: 20px; }
+.statwlasna h2, .statfirmowa h2, .statwlasna div, .statfirmowa div { flex-grow: 1; padding: 15px; font-size: 1rem; }
+.statwlasna h2, .statfirmowa h2 {
+    border-bottom: 1px solid grey;
+}
+.statwlasna div, .statfirmowa div { display: inline-flex; justify-content: space-between; border-bottom: 1px solid red;}
+.statwlasna div:nth-child(2), .statfirmowa div:nth-child(2) { border-color: #9c27b0; }
+.statwlasna div:nth-child(3), .statfirmowa div:nth-child(3) { border-color: #2196f3; }
+.statwlasna div:nth-child(4), .statfirmowa div:nth-child(4) { border-color: #298800; }
+.glownaGora {
+	height: 320px;
+	padding: 20px 50px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.glownaAwatar {
+	background-color: #ccc;
+	background-size: cover;
+	background-position: center;
+	height: 210px;
+	width: 210px;
+	min-width: 210px;
+	box-shadow: 0 0 20px 5px #000;
+	margin-right: 30px;
+}
+.miniProfil {
+	display: flex;
+}
+.miniDane { display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1;}
+.miniDane div { display: flex; flex-direction: column; }
+.miniDane div:nth-child(1) span:nth-child(1) { letter-spacing: 1px; color: #eee; font-weight: bold; font-size: 1.7rem;}
+.miniDane div:nth-child(1) span:nth-child(2) { letter-spacing: 1px; color: greenyellow; font-weight: bold; font-size: 1.3rem;}
+.miniDane div:nth-child(2) { font-size: 1.1rem; letter-spacing: 1px; font-weight: 600;}
+.miniDane div:nth-child(3) { font-size: 0.9rem; line-height: 1.4;}
+.miniDane div:nth-child(3) div { display: flex; flex-direction: row;}
+.miniDane div:nth-child(3) div a { margin-right: 15px; }
+.top3 {
+	position: relative;
+	width: 450px;
+	height: 230px;
+	background-position: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+	margin-top: 90px;
+	color: #ddd;
+}
+.top3 span, .top3 a { position: absolute; text-align: center; font-weight: 700; }
+.top3 .tytul { left: 0; right: 0; top: -70px; font-size: 1.2rem; letter-spacing: 2px;}
+.top3 .miejsce1 { left: 0; right: 0; top: -25px; font-weight: 500;}
+.top3 .miejsce2 { top: 20px; left: 30px; right: 290px; font-weight: 500;}
+.top3 .miejsce3 { top: 35px; right: 35px; left: 290px; font-weight: 500;}
+.profilKarta {
+	width: 267px;
+	height: 167px;
+	background-size:cover;
+	background-position: center;
+	transform: translateY(30px);
+	transition: transform 0.4s ease;
+	box-shadow: 0 0 20px 5px #111;
+}
+.profilKarta:hover {
+	transform: translateY(15px);
+	cursor: pointer;
+}
+.profilWysuwalne {
+	z-index: 1;
+	height: 60px;
+	display: flex;
+	border-radius: 20px 20px 0 0;
+	justify-content: space-evenly;
+	width: 100%; max-width: 1250px;
+	background:#181818;
+	box-shadow: 0 0 20px 5px rgba(17, 17, 17, 0.882);
+	border-bottom: 1px solid white;
+}
+.miniWykresik { display: flex; flex-grow: 1; flex-direction: column; margin-bottom: -15px; position: relative; }
+.miniWykresik::before { position: absolute; display: block; content: "Statystyka ostatnich tras"; left: 0; right: 0; text-align: center;}
+.ktoryWykresWybrany { margin-top: 20px; margin-bottom: -20px; text-align: center;}
+.ktoryWykresWybrany button { background: #eee; outline: none; border: none; padding: 8px; margin: 0 15px; cursor: pointer; transition: background, letter-spacing 0.4s ease;}
+.ktoryWykresWybrany button:hover { background: #aaa; letter-spacing: 1px;}
+.ktoryWykresWybrany button:disabled { background: #373; color: #ddd; cursor: not-allowed; letter-spacing: normal;}
+.odnosnikProfil { height: 40px; width: 40px; display: block; background-size: cover; background-position: center; }
+.rankingMiesiac { position: absolute; left: 0; bottom: 100%; padding: 8px; background: #181818; outline: none; border: none; color: orange; font-size: 1.1rem; color-scheme: dark;}
+table.rankingTable, table.ostatnieTrasy { width: 100%; border-collapse: collapse; }
+.rankingTable tr { border-left: 4px solid transparent; }
+.rankingTable tr th, .ostatnieTrasy tr th { border-bottom: 1px solid goldenrod; }
+.rankingTable tr th, .rankingTable tr td, .ostatnieTrasy tr th, .ostatnieTrasy tr td { padding: 10px 15px; text-align: left; vertical-align: middle; transition: all .4s ease;}
+.ostatnieTrasy tr th, .ostatnieTrasy tr td { padding: 10px; }
+.ostatnieTrasy tr td:first-child, .ostatnieTrasy tr th:first-child, .ostatnieTrasy tr th:nth-child(2) { text-align: center;}
+.rankingTable tr:nth-child(odd) td, .ostatnieTrasy tr:nth-child(odd) td { background: #121212; }
+.rankingTable tr:nth-child(even) td, .ostatnieTrasy tr:nth-child(even) td { background: #161616; }
+.rankingTable tr:hover td, .ostatnieTrasy tr:hover td { background: #1C1C1C; color: #ddd; }
+.rankingTable th { cursor: pointer; }
+.rankingTable img, .ostatnieTrasy img {
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-right: 20px;
+	width: 45px;
+	height: 45px;
+}
+.ostatnieTrasy img { border-radius: 0; margin-right: -12px;}
+.ostatnieTrasy a:hover { letter-spacing: 0;}
+.ostatnieTrasy td img.flaga, .formularzDane .flaga, .zarzadzanieMiastami .flaga { width: 20px; height: 14px; margin: 0 8px 2px 5px; }
+.ostatnieTrasy img.ktoOddal {
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-right: 20px;
+	width: 45px;
+	height: 45px;
+}
+.formularzDane .flaga { margin: 0 5px -1px 0; }
+.ostatnieTrasy td b { font-weight: 500; color: #fff; font-size: 0.85rem; }
+.ostatnieTrasy td svg { margin: 0 6px -2px 11px; color: dodgerblue; }
+.ostatnieTrasy td img.flaga:first-child { margin-left: 0;}
+.rankingTable tr th:hover { letter-spacing: 1px; background: #0f0f0f; color: #eee; user-select: none; }
+tr.twojestaty { border-left: 2px solid #3f3;}
+tr th.wybranySort  { border-bottom: 1px solid dodgerblue; color: dodgerblue !important; letter-spacing: 1px; background: #0e0e0e; }
+tr th.rosnacySort  { border-bottom: 1px solid crimson; color: crimson !important; letter-spacing: 1px; background: #0e0e0e; }
+tr th.malejacySort { border-bottom: 1px solid #3d3; color: #3d3 !important; letter-spacing: 1px; background: #0e0e0e; }
+.komentarzeProfilHolder, .winietyProfilHolder { position: absolute; left: 0; right: 0; bottom: 0; top:0; background: #141414; padding: 10px; }
+.wysuwanieKomentarzy, .wysuwanieWiniet { position: absolute; top: 100%; left: 20px; padding: 10px 15px; background: #141414; color: #eee; transition: all 0.4s ease; box-shadow: 0 0 20px 4px #111;}
+.wysuwanieKomentarzy:hover, .wysuwanieWiniet:hover { cursor: pointer; background: #eee; color: #1c1c1c; }
+.wysuwanieKomentarzy svg, .wysuwanieWiniet svg { vertical-align: middle; margin-left: 5px;}
+.wysuwanieWiniet { left: 180px;}
+.komentarzeProfil, .winietyProfil { overflow-y: auto; height: calc(100% - 70px); background: #222; padding: 10px; margin-bottom: 10px;}
+.winietyProfil { height: 100%; margin-bottom: 0; display: flex; flex-direction: row; gap: 15px; flex-wrap: wrap; align-content: baseline; }
+.komentarzProfil, .winietaProfil, .winietaShop { position: relative; display: flex; color: #fff; flex-grow: 1; padding: 10px; background: #1c1c1c; margin-bottom: 15px; flex-direction: column;}
+.winietaShop, .winietaProfil { flex-direction: row; flex-grow: 1; width: fit-content; max-width: 320px; height: 80px; box-shadow: 0 0 4px 1px #131313; user-select: none; margin: 0;}
+.winietaShop img, .winietaProfil img { box-shadow: 0 0 6px 0 #000; margin-right: 10px; width: 100px; height: 60px; }
+.winietaDane { display: flex; flex-grow: 1; flex-direction: column; align-items: center; justify-content: center; }
+.winietaDane p { margin-top: 5px; font-size: 0.8rem; }
+.komentarzProfil:last-child { margin-bottom: 5px; }
+.komentarzKto { margin-right: 10px;}
+.komentarzNaglowek { font-size: 0.85rem; color: gray; display: flex;}
+.komentarzTresc { font-size: 0.95rem; margin-top: 5px;}
+.napiszKomentarz { height: 60px; width: 100%; position: relative; }
+.napiszKomentarz textarea { width: 100%; height: 100%; padding: 10px 100px 10px 10px; font-size: 1rem; font-weight: bold; color: #ccc; background: rgba(255,255,255,0.06); border: 1px solid goldenrod; transition: border-color 0.4s ease; overflow-y: hidden; resize: none;}
+.napiszKomentarz textarea:focus { outline: none; border: 1px solid dodgerblue; }
+.napiszKomentarz input[type='submit'] { font-weight: bold; position: absolute; right: 0; height: 100%; vertical-align: middle; padding: 10px 20px; border: 1px solid goldenrod; background: #ddd; font-size: 1rem; transition: all 0.4s ease; }
+.napiszKomentarz input[type='submit']:hover { cursor: pointer; background: goldenrod; color: #eee; }
+a.usunKomentarz { color: gray; position: absolute; right: 20px; font-size: 0.8rem; }
+.komunikat { display: flex; z-index: 99999; position: fixed; align-self: center; padding: 30px; background: #0c0c0c; color: #fff; font-size: 1.2rem; font-weight: bold; flex-direction: column; box-shadow: 0 0 20px 3px #111; }
+.komunikat div { display: flex; justify-content: space-around; margin-top: 20px; }
+.komunikat div a { color: #2f2; }
+.komunikat div a:last-child { color: crimson; }
+.zabluruj { filter: blur(2px);}
+.overlay { position: absolute; left: 0; top: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.3); z-index: 12;}
+.edycjaProfilBtn { position: absolute; z-index: 20; top: 0; left: 0; padding: 10px; height: 40px; width: 40px; border-radius: 0 0 20px; cursor: pointer; transition: all 0.4s ease; color: #555; background: #111;}
+.edycjaProfilBtn:hover { color: #fff; background: #181818; border-radius: 0 0 15px;}
+.edycjaProfilu { display: flex; flex-direction: column; position: absolute; z-index: 3; overflow: hidden; left: 0; top: 0; bottom: 100%; right: 100%; background: #181818; transition: all 0.4s ease; }
+.edycjaProfiluWysun { right: 0; bottom: -60px; padding: 20px; padding-left: 50px; background: #0c0c0c; }
+.edycjaSekcjaAwatar { display: flex; margin-right: 20px; flex-direction: column; width: 230px; padding: 15px; border-radius: 15px; }
+.edycjaSekcjaAwatarWyswietlany { position: relative; border-radius: 10px; box-shadow: 0 0 20px 3px #000; width: 200px; height: 200px; background-color: white; background-position: center; background-size: cover;}
+.edycjaSekcjaAwatarInputNo, .edycjaSekcjaAwatarInputYes { margin-top: 15px; width: 100%; padding: 10px; visibility: hidden; position: relative; }
+.edycjaSekcjaAwatarInputNo::before, .edycjaSekcjaAwatarInputYes::before { border-radius: 10px; font-size: 0.9rem; text-shadow: 1px 1px 3px #000; cursor: pointer; position: absolute; left: 0; top: 0; right: 0; bottom: 0; display: flex; justify-content: center; align-items: center; font-weight: bold; color: #fff; background: #181818; visibility: visible; transition: all .4s ease;}
+.edycjaSekcjaAwatarInputNo:hover::before, .edycjaSekcjaAwatarInputYes:hover::before { letter-spacing: 1px; }
+.edycjaSekcjaAwatarInputNo::before { content:"Nowe zdjęcie?"; background: goldenrod;}
+.edycjaSekcjaAwatarInputYes::before { content: "Wybrano zdjęcie..."; background: #066c06;}
+.awatarCofnij { position: absolute; right: 0; bottom: 0; width: 35px; height: 35px; cursor: pointer; padding: 10px; color: #eee; transition: color .4s ease; }
+.edycjaSekcjaAwatarWyswietlany:hover .awatarCofnij { color: goldenrod; }
+.edycjaSekcjaAwatarWyswietlany:hover .awatarCofnij:hover { color: crimson; }
+.edycjaWybor { display: flex; justify-content: flex-end; margin-top: 20px;}
+.edycjaWybor button { padding: 10px; outline: none; border-color: transparent; cursor: pointer; margin: 0 15px; display: flex; align-items: center; transition: all .4s ease; }
+.edycjaWybor button:nth-child(1) { background:crimson; }
+.edycjaWybor button:nth-child(2) { background: orangered; }
+.edycjaWybor button:nth-child(3) { background: #066c06; }
+.edycjaWybor svg { font-size: 1.1rem; width: 30px; padding-right: 8px; border-right: 1px solid black; }
+.edycjaWybor button p { margin-left: 10px; transition: letter-spacing .4s ease; font-weight: bold;}
+.edycjaWybor button:hover p { letter-spacing: 1px; }
+.edycjaWybor button:hover { color: #eee; }
+.edycjaForm { padding: 10px 20px;
+    border-radius: 15px;
+    color: #eee;
+    font-weight: bold;
+    text-shadow: 1px 1px 3px #000;
+    font-size: 1.1rem;
+    display: flex;
+    flex-direction: column;
+}
+.edycjaForm input { text-shadow: 1px 1px 3px #444; border: 2px solid transparent; padding: 10px; outline: none; margin-top: 10px; font-size: 0.9rem; width: fit-content; box-shadow: 0 0 20px 3px #000; border-radius: 5px; transition: all 0.4s ease;}
+.edycjaForm input:required:invalid { border-color: crimson; background: rgb(233, 136, 136); color: #fff; }
+.edycjaForm input:required:invalid::placeholder { color: #fff; }
+
+.amerykanskiePrawkoTyl, .polskiePrawkoTyl { z-index: 5; border: 2px solid #ff7d7d; background-position: center; background-repeat: no-repeat; width: 865px; height: 545px; border-radius: 30px; padding: 10px; position: relative; }
+.amerykanskiePrawkoTyl { border-color: #bdfcff; }
+.kartaPaliwowaTyl { z-index: 5; border: 2px solid #001f74; background-position: center; background-repeat: no-repeat; width: 840px; height: 530px; border-radius: 30px; padding: 10px; position: relative; box-shadow: 0 0 40px 15px #000;}
+.kartaPaliwowaPunkty { position: absolute; right: 10px; bottom: 203px; color: #111; font-weight: bold; width: 220px; text-align: center; font-size: 1.5rem; font-style: italic; }
+.kartaPaliwowaLogo { position: absolute; right: 35px; top: 35px; width: 140px; height: 140px; background-size: contain; background-repeat: no-repeat; background-position: center; }
+.kartaPaliwowaTytul { position: absolute; left: 25px; top: 25px; font-weight: bold; color: #ffe000; font-size: 2.5rem; letter-spacing: 3px; padding: 0 10px 15px 20px; width: 610px; border-bottom: 4px solid crimson; font-style: italic; }
+.kartaPaliwowaKogo { position: absolute; left: 40px; top: 110px; font-weight: 500; line-height: 1.8; font-size: 1.5rem; font-style: italic; color: #ffffff; color: #13c5b4; letter-spacing: 1px; }
+.kartaPaliwowaKogo b { color: #13c5b4; color: #fff;  }
+.kartaPaliwowaFirma { position: absolute; letter-spacing: 0.5px; bottom: 30px; left: 30px; font-size: 1.7rem; color: #ddd; font-weight: 600; line-height: 0.65;}
+.kartaPaliwowaFirma span { font-size: 0.65rem; margin-left: 5px; }
+.licencja { z-index: 4; position: fixed; display: flex; width: 100%; height: 100vh; padding-left: 60px; justify-content: center; align-items: center;}
+.licencjaTlo { position: fixed; cursor: pointer; left: 0; right: 0; top: 0; bottom: 0; background: rgba(0,0,0,0.77);}
+table.prawko-uprawnienia, table.prawko-uprawnieniaUSA { text-shadow: 1px 1px 10px #222; border: hidden; border-collapse: collapse; position: absolute; left: 255px; top: 65px; width: calc(100% - 280px); margin: 0; }
+table.prawko-uprawnienia th, table.prawko-uprawnienia td, table.prawko-uprawnieniaUSA th, table.prawko-uprawnieniaUSA td {
+    padding: 7px;
+    text-align: left;
+    background: transparent;
+    color: black;
+	font-size: 1rem;
+	border: 1px solid black;
+}
+table.prawko-uprawnienia th, table.prawko-uprawnieniaUSA th { font-weight: 600 }
+table.prawko-uprawnienia td, table.prawko-uprawnieniaUSA td { font-weight: 500 }
+table.prawko-uprawnieniaUSA { left: 40px; top: 110px; }
+.katCE { position: absolute; left: 20px; top: 250px; color: #000; text-shadow: 1px 1px 10px #222; }
+.katCEUSA { position: absolute; right: 70px; top: 120px; color: #000; text-shadow: 1px 1px 10px #222; }
+.prawkoUSALogo, .prawkoPLLogo { position: absolute; left: 55px; bottom: 30px; width: 120px; height: 120px; background-size: contain; background-repeat: no-repeat; background-position: center; }
+.prawkoUSALogo { left: unset; right: 45px; bottom: 45px; }
+.przegladajTrasy { padding: 10px; position:relative; }
+.przegladajTrasy h4 { text-align: center; margin: 5px 0 10px;}
+a.wyborGry { color: #bbb; position: absolute; right: 0px; bottom: 100%; background: #0e0e0eee; padding: 14px; display: inline-block; font-size: 0.9rem; width: 185px; text-align: center; text-transform: uppercase; display: inline-flex; align-items: center; gap: 5px; letter-spacing: 1px; flex-direction: row-reverse; border-radius: 14px 14px 0 0;}
+a.wyborGry img { height: 35px; scale: 1.3; }
+a.wyborGry:last-child { right: 195px; flex-direction: row;}
+a.wyborGry:hover { background: #0e0e0e; }
+.formularzTrasy { position: relative; width: 1300px; height: calc(1310px * 9 / 16); background: #0e0e0e; padding: 30px; box-shadow: 0 0 20px 1px #000; z-index: 33; color: #ddd;}
+.formularzTrasyScreen { flex-direction: column; position: fixed; padding: 20px 20px 20px 80px; left: 0; top: 0; right: 0; bottom: 0; z-index: 5; background: rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: center;}
+.formularzLinia { gap: 13px; display: flex; flex-direction: row; flex-grow: 1; justify-content: space-between; margin-bottom: 20px; }
+.formularzDane { display: flex; flex-grow: 1; flex-direction: column; max-width: 300px; min-width: 300px; }
+.formularzDane h3 { letter-spacing: -1px; margin-bottom: 10px; text-shadow: 1px 1px 8px #2e2e2e; font-size: 1.1rem; font-weight: 400;}
+.formularzDane svg { font-size: 1.5rem; margin-right: 10px; }
+.formularzDane input, .formularzDane select, .formularzDane option, .formularzDane textarea { background: #e5e5e5; outline: none; border: none; padding: 15px; font-weight: 600; }
+.formularzDane textarea { flex-grow: 1; height: 120px; text-align:justify; }
+.listaPromowDiv { position: absolute; top: 30px;}
+.zdjeciaTrasy { display: flex;
+	flex-grow: 1;
+    flex-wrap: wrap;
+    gap: 5px;  }
+.zdjecieTrasa { width: 115px; height: 70px; display: flex; border: 1px solid #000; background-color: #525252; background-size: cover; background-position: center; position: relative;}
+.zdjecieTrasaUsun {     position: absolute;
+    right: 3px;
+    top: 3px;
+    width: 20px;
+    margin: 0 !important;
+    height: 20px;
+    cursor: pointer;
+    color: #f7f7f76b;
+    transition: color .4s ease;
+}
+.zdjecieTrasaPodglad { position: absolute; left: 3px; top: 3px; margin: 0 !important; width: 18px; height: 18px; cursor: pointer; color: #f7f7f76b; transition: color .4s ease; }
+.podgladZdj { position: absolute; left: 0; right: 0; bottom: -40px; top: 0; background-color: #0c0c0c; cursor: zoom-out; background-size: contain; background-repeat: no-repeat; background-position: center; z-index: 99;}
+.zdjecieTrasa:hover .zdjecieTrasaUsun, .zdjecieTrasa:hover .zdjecieTrasaPodglad { color: #ffffffab; }
+.zdjecieTrasa:hover .zdjecieTrasaUsun:hover, .zdjecieTrasa:hover .zdjecieTrasaPodglad:hover { color:rgb(255, 187, 0); }
+div.listaPromow { max-width: 300px !important; position: relative; }
+span.brakZdjec { width: 100%; text-align: center; color: #000; font-weight: 600; padding: 20px; }
+.trasaOpcje { position: absolute; right: 0; top: 100%; color: #fff; display: flex;}
+.trasaOpcje a { padding: 10px; outline: none; background: darkgoldenrod; border-color: transparent; cursor: pointer; margin-left: 20px; display: flex; align-items: center; transition: all .4s ease; font-size: 0.7rem; letter-spacing: 1px; text-transform: uppercase; text-shadow: 1px 1px 6px #000;}
+.trasaOpcje a:hover { background: #1c1c1c !important;}
+.trasaOpcje a:first-child { background:crimson; }
+.trasaOpcje svg { font-size: 1.1rem; width: 30px; padding-right: 8px; border-right: 1px solid black; margin-right: 10px; }
+.informacjeTrasy { position: absolute; left: 0; bottom: 100%; text-shadow: 1px 1px 3px #222; font-size: 0.9rem; padding: 15px; background: #0e0e0e; color: #eee; display: flex; flex-direction: column; align-items: center;}
+.formularzDane a, .formularzDane span { font-size: 0.9rem; padding: 10px; font-weight: 300; font-style: italic; text-shadow: 1px 1px 5px #444; }
+.formularzDane span { font-size: 0.85rem; background: #e5e5e5; padding: 15px; font-weight: 600; font-style:normal; color: #000; }
+.formularzDane a { display: flex; align-items: center; padding: 0; font-size: 1rem; text-decoration: none; color: inherit; font-weight: 600; font-style: normal; letter-spacing: 1px;}
+.formularzDane a img { width: 45px; height: 45px; vertical-align: middle; margin-right: 10px; }
+.akcjaDyspozytor { border-top: 2px solid crimson; flex-direction: column; position: absolute; z-index: 90; bottom: -50px; left: 0; right: 0; background: #222; display: flex; align-items: center; justify-content: center; padding: 20px; color: #eee; }
+.akcjaDyspozytor textarea { margin-top: 5px; resize: none; width: 400px; height: 100px; background: #e5e5e5; outline: none; border: none; text-align: justify; padding: 5px 10px; font-weight: 600; font-size: 0.85rem; }
+.akcjaDyspozytor select, .akcjaDyspozytor option { margin-left: 15px; background: #e5e5e5; outline: none; border: none; padding: 5px; font-weight: 600; }
+.akcjaDyspozytor a { padding: 10px; background: #eee; color: #ddd; margin: 0 15px; cursor: pointer; transition: all .4s ease; font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase; text-shadow: 1px 1px 6px #000; }
+.akcjaDyspozytor a:first-child { background: darkgoldenrod; }
+.akcjaDyspozytor a:last-child { background: #373; }
+.akcjaDyspozytor a:hover { background: #fff; color: #000; }
+.akcjaDyspozytor a svg { font-size: 1.1rem; width: 30px; padding-right: 8px; border-right: 1px solid black; margin-right: 4px; vertical-align: sub;}
+.akcjaDyspozytor option:first-child, .ustawieniaKol option:first-child, .formularzDane option:first-child { visibility: hidden; display: none; }
+.akcjaDyspozytor input { padding: 10px; background: #b7b7b7; outline: none; border: 2px solid crimson; font-weight: 600; width: 300px; font-size: 1rem; text-align: center; }
+.customDysp { position: absolute; left: 10px; top: 100%; margin-top: -10px; }
+.customDysp input { padding: 15px; border: none; width: 95px; outline: none; background: #111; color: #eee;  }
+.customDysp a { display: inline-flex;
+    float: right;
+    height: 100%;
+    padding: 15px;
+    background: #2c2c2c;
+    color: #eee; cursor: pointer; transition: all .4s ease; }
+.customDysp a:hover { color: dodgerblue; background: #ccc;}
+.dyspHistoria { position: absolute; z-index: 9; left: 0; top: 0; bottom: 0; right: 0; overflow-y: scroll; }
+.dyspHistoria .ostatnieTrasy tr th { background: #111; }
+.dyspHistoriaBtn { right: 10px; top: 100%; position: absolute; background: #111; color: #eee; padding: 15px; cursor: pointer; transition: all .4s ease; font-size: 0.95rem; }
+.dyspHistoriaBtn:hover { background: #ccc; color: #111; }
+.dyspHistoriaBtn svg { margin: 0px 5px -2px 0; }
+.uprTable tr:last-child td { padding: 10px 5px;}
+.uprTable input, .uprTable select { width: 100%; height: 100%; padding: 15px 8px; font-size: 0.95rem; border: 1px solid #2a2a2a; background: transparent; color: #eee; }
+.uprTable option { background: #1c1c1c; border: none; padding: 8px; }
+.uprTable option:first-child { display: none; visibility: hidden;}
+.wniosek { padding: 30px; }
+.wniosekGora { display: flex; flex-direction: row; gap: 10px; margin-top: 20px; }
+.przegladajUzytkownikow { max-height: 70vh; overflow-y: auto;}
+.administrowanieKonta { position: absolute; left: 0; right: 0; top: 0; bottom: 0; background: #111; display: flex; padding: 25px; justify-content: center; align-items: center; gap: 20px; }
+.wniosekGoraKol, .administrowanieKol { display: flex; flex-direction: column; gap: 10px; }
+.administrowanieKontaAwatar { width: 300px; height: 300px; background-size: cover; background-position: center; border: 1px solid #666; }
+.ustawieniaKol input, .ustawieniaKol select, .ustawieniaKol textarea, .wniosekGora input, .wniosekGora select, .wniosekGora textarea, .administrowanieKonta input, .administrowanieKonta select, .administrowanieKonta textarea { margin-top: 10px; width: 100%; font-weight: bold; background: rgba(255,255,255,0.75); padding: 8px;  outline: none; border: none; }
+.administrowanieKonta textarea { resize: none; height: 135px;}
+.wniosekGora textarea { resize: none; height: 105px; width: 400px; text-align: justify;}
+.administrowanieOpcje { position: absolute; bottom: 20px; }
+.ustawieniaKol button, .wniosekGora button, .potwierdzenieUsuwania button, .administrowanieOpcje button { padding: 10px; font-weight: bold; margin: 0 10px; letter-spacing: 1px; background: crimson; color: #ccc; border: none; text-shadow: 1px 1px 3px #111; box-shadow: 0 0 10px 0 #060606; cursor: pointer; transition: all .4s ease; }
+.wniosekGora button { background: #373; }
+.ustawieniaKol button { width: 100px; margin: 0;}
+.wniosekGora button:hover { letter-spacing: 2px; background: goldenrod; }
+.potwierdzenieUsuwania button:hover, .administrowanieOpcje button:hover { letter-spacing: 3px;}
+.administrowanieOpcje button:first-child { background: darkgoldenrod; }
+.potwierdzenieUsuwania button:first-child, .administrowanieOpcje button:last-child { background: #373; }
+.potwierdzenieUsuwania { position: absolute; left: 0; top: 0; width: 100%; height: 100%; padding: 30px; display: flex; gap: 30px; flex-direction: column; justify-content: center; align-items: center; background: #111;}
+.menadzerPodwyzkaBtn { font-size: 0.7rem; color: goldenrod; position: absolute; font-weight: bold; transform: translate(10px, 10px); cursor: pointer; transition: all .4s ease; }
+.menadzerPodwyzkaBtn:hover { color: #ddd; letter-spacing: 1px;}
+.historiaWnioskow { display: flex; flex-direction: column; align-items: center; background: #0c0c0c; padding: 10px; }
+.historiaWnioskow table { margin-top: 10px; background: #1e1e1e;}
+.historiaWnioskow table tr th, .historiaWnioskow table tr td { border: 1px solid #333;}
+.ustawieniaMain { display: flex; padding: 20px; gap: 20px; flex-direction: row; justify-content: space-evenly;}
+.ustawieniaKol { padding: 10px; display: flex; flex-direction: column; gap: 10px; }
+.ustawieniaKol button { background: orangered; margin: 0 auto; }
+.ustawieniaKol button:hover { background: #298800; letter-spacing: 2px;}
+.ustawieniaKol textarea { flex-grow: 1; resize: none; margin-top: 0px;}
+.slupeczek { width: 1px; background: #444; height: 100%; display: block; content: " ";}
+/* scroll */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: rgba(255,255,255,0.1); box-shadow: 0 0 4px 0 #111; }
+::-webkit-scrollbar-track:hover { background: rgba(255,255,255,0.15); }
+::-webkit-scrollbar-thumb { background: dodgerblue; box-shadow: 0 0 4px 0 #333; }
+.rankingFiltrowanie { position: absolute; bottom: 100%; right: 0; background: #121212; align-items: center; display: flex; gap: 10px; padding: 5px 10px; }
+.rankingFiltrowanie select { padding: 4px; border: none; outline: none; background: #a5a5a5; max-width: 150px; font-weight: 500; font-size: 1rem; }
+table.zarzadzanieKontami tr td.ostatniaKolumnaKonta { text-align: center; line-height: 2;}
+.trasyUrlop { margin: 0 auto; padding: 20px 20px 5px 20px; text-align: center; font-style: italic; color: orange; }
+.profilUrlop { padding: 20px; display: flex; align-items: center; gap: 20px; position: absolute; top: 100%; text-align: right; max-width: 70%; right: 0; background: #0c0c0c; border-radius: 0 0 20px 20px; font-style: italic; color: orange;}
+.profilUrlop button, .trasyUrlop button { margin-top: 10px; padding: 8px 10px; outline: none; border: 0px solid transparent; background: crimson; font-weight: 600; font-size: 0.9rem; color: #111; text-shadow: 0 0 3px #222; box-shadow: 0 0 10px 1px #111; cursor: pointer; transition: all .4s ease; }
+.profilUrlop button { margin-top: 0;}
+.profilUrlop button:hover, .trasyUrlop button:hover { letter-spacing: 2px; color: #ddd; }
+.profilUrlop { display: flex; padding: 20px; align-items: center; gap: 20px; }
+a.menadzerOdnosnikPodwyzka { color: goldenrod; }
+a.menadzerOdnosnikUrlop { color: crimson; }
+.menadzerRozpatrzTytul { position: absolute; top: 20px; font-size: 1.5rem; font-style: italic; font-weight: 600; letter-spacing: 2px; }
+.dyspozytorniaTrasyForm .formularzLinia { justify-content: left; gap: 12px; }
+.zatwierdzaniePremieKary { display: flex; gap: 15px; }
+.zatwierdzaniePremieKary div { display: flex; flex-direction: column; justify-content: space-between; gap: 10px; background: #121212; padding: 20px;  }
+optgroup { background: #121212; color: #ddd; }
+.odnosnikWiniety { position: absolute;
+    top: 100%;
+    left: 296px;
+    padding: 10px 15px;
+    background: #222;
+    color: #eee;
+    transition: all .4s ease;
+	cursor: pointer;
+}
+.odnosnikWiniety:hover { background: #444; color: #111; }
+.odnosnikWinietySchowane { width: 0; overflow: hidden; padding: 10px 0;}
+.odnosnikWiniety svg { margin-right: -5px; font-size: 1.1rem; margin-top: -5px; margin-left: 3px; vertical-align: middle; }
+.winietyWytlumaczenie { display: inline-flex; width: 100%; gap: 40px; margin: 0 0 20px; justify-content: center; font-size: 0.8rem; }
+.wytlumaczenieW { display: flex; align-items: center; }
+.kolkoWinieta { width: 15px; height: 15px; background: grey; border-radius: 50%; display: block; margin-right: 15px; }
+.winietyWytlumaczenie .swiezaWinieta { background: chartreuse; }
+.winietyWytlumaczenie .niedlugoWinieta { background: orange; }
+.winietyWytlumaczenie .wygaslaWinieta { background: crimson; }
+.winietyWytlumaczenie .wybranaWinieta { background: dodgerblue; }
+.tytulWinietaShop { letter-spacing: 3px; font-weight: 600; font-size: 1.6rem; text-align: right;}
+.listaWinietShop { padding: 10px; background: #1c1c1c; box-shadow: 0 0 8px 0 #000; display: flex; max-height: 70vh; flex-wrap: wrap; justify-content: center; gap: 10px; overflow: auto; padding-right: 10px; }
+.winietaShop { border: 3px solid grey; font-weight: 500; cursor: pointer; transition: all .4s ease; }
+.winietaShop img { width: 90px; height: 55px; }
+.winietaShop:hover { background: #001b33; }
+.winietaShop.swiezaWinieta { border-color: chartreuse; }
+.winietaShop.niedlugoWinieta { border-color: orange; }
+.winietaShop.wygaslaWinieta { border-color: crimson; }
+.winietaShop.wybranaWinieta { border-color: dodgerblue; }
+.winietaShopGora { margin-bottom: 20px; display: flex; gap: 30px; justify-content: space-between; }
+.winietaShopKoszyk h3 { border-bottom: 2px solid crimson; width: 70px; padding-bottom: 8px; }
+.zamowWiniety { width: 195px; outline: none; border: none; padding: 6px; margin-top: 5px; cursor: pointer; font-weight: 600; font-size: 0.8rem; letter-spacing: 1px; background: orange; transition: all .4s ease; }
+.zamowWiniety:hover { letter-spacing: 3px; background: #ddd; }
+.winietaShopBoczne { justify-content: space-evenly; display: flex; flex-direction: column; }
+.winietaShopKoszyk { display: flex; flex-direction: column; gap: 5px; position: relative; text-wrap: nowrap; flex-grow: 1; }
+.winietaShopKoszykAnim { position: absolute; display: block; content: " "; background: #111; left: 0; right: 0; bottom: 100%; top: 0; animation: koszykAnim 1s; }
+@keyframes koszykAnim {
+	0% { top: 0; bottom: 0;}
+	100% { top: 100%; bottom: 0; }
+}
+.admAwatar { padding: 6px 12px; text-shadow: 0 0 3px #000; background: #337733; border: none; font-weight: 600; color: #fff; letter-spacing: 1px; cursor: pointer; transition: all .4s ease; }
+.admAwatar:hover { letter-spacing: 2px; }
+.kartaPaliwowa { position: relative; }
+.kartaPaliwowa span { top: 8px; left: 15px; font-size: 0.85rem; position: absolute; font-weight: bold; color: #ffe000; letter-spacing: 3px; padding: 0 0 7px 0px; width: 70%; border-bottom: 2px solid crimson; font-style: italic; }
+.tabelkaPodwyzka { position: absolute; top: 43px; right: 20px; font-size: 0.85rem; text-align: left;}
+.tabelkaPodwyzka td { padding: 2px; }
+.tabelkaPodwyzka tr td:nth-child(2), .tabelkaPodwyzka tr th:nth-child(2) { text-align: center; padding-left: 5px;}
+.tabelkaPodwyzka table { border-collapse: collapse;}
+.miniWykresik span { margin-top: 40px; text-align: center; font-style: italic;}
+.ustawieniaKol h2 { text-align: center; }
+.zarzadzanieMiastami, .zarzadzaniePromami { position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: #111111; box-shadow: 0 0 15px 0 #0c0c0c; z-index: 2; animation: wejscieSmooth .6s ease; overflow: auto; }
+.zarzadzanieMiastami table, .zarzadzaniePromami table { width: 100%; border-collapse: collapse;}
+.zarzadzaniePromamiDodaj *, .zarzadzanieMiastamiDodaj *, .zarzadzaniePromami tr td, .zarzadzaniePromami tr th, .zarzadzanieMiastami tr td, .zarzadzanieMiastami td th { padding: 15px; text-align: center; font-size: 1rem; letter-spacing: 2px; background: #1c1c1c; }
+.zarzadzanieMiastami table thead th, .zarzadzaniePromami table thead th { position: sticky; top: 0; background: #111111; padding: 15px; font-size: 1.1rem; letter-spacing: 2px; text-align: center;}
+.zarzadzaniePromami tr:nth-child(even) td, .zarzadzanieMiastami tr:nth-child(even) td { background: #181818; }
+.zarzadzanieMiastamiFiltry { position: absolute;
+    bottom: 100%;
+    right: 0;
+    background: #111111;
+    /* padding: 10px 20px; */
+    display: flex;
+    gap: 10px; }
+.zarzadzanieMiastamiFiltr { flex-direction: column;
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    gap: 5px;
+    justify-content: center;}
+.zarzadzanieMiastamiFiltr select, .zarzadzanieMiastamiFiltr option, .zarzadzanieMiastamiFiltr input { width: 100%; font-weight: bold; padding: 6px 10px; color: #111; letter-spacing: 1px; border: none; outline: none; font-size: 0.85rem; background: #aaa; max-width: 150px; }
+.zarzadzanieMiastamiFiltr button { flex-grow: 1;
+    padding: 10px 20px;
+    background: orange;
+    border: none;
+    color: #111;
+    font-weight: bold;
+    letter-spacing: 1px;
+    width: 160px;
+	text-shadow: 0 0 5px #222;
+	text-transform: uppercase;
+    cursor: pointer;
+    font-size: 0.95rem;
+transition: all .4s ease; }
+.zarzadzanieMiastamiFiltr button:hover { background: crimson; letter-spacing: 2px;}
+.zarzadzanieMiastami img.flaga { margin: -5px 10px -5px 0; height: 18px; width: 25px; }
+.zarzadzaniePromamiDodaj, .zarzadzanieMiastamiDodaj { top: 100%; right: 0; width: 100%; background: #111111; position: absolute; display: flex; }
+.zarzadzaniePromamiDodaj *, .zarzadzanieMiastamiDodaj * { border: none; outline: none; color: #ddd; background: transparent; }
+.zarzadzanieMiastami tr td:nth-child(1), .zarzadzanieMiastami table thead th:nth-child(1), .zarzadzanieMiastamiDodaj *:nth-child(1) { width: 107px; }
+.zarzadzanieMiastami tr td:nth-child(2), .zarzadzanieMiastami table thead th:nth-child(2), .zarzadzanieMiastamiDodaj *:nth-child(2) { width: 108px; }
+.zarzadzanieMiastamiDodaj *:nth-child(2) { width: 130px; }
+.zarzadzanieMiastamiDodaj *:nth-child(2) { border: 1px solid #111; text-align: left; }
+.zarzadzanieMiastamiDodaj *:nth-child(2) option { background: #222; text-align: left; }
+.zarzadzanieMiastami tr td:nth-child(3), .zarzadzanieMiastami table thead th:nth-child(3), .zarzadzanieMiastamiDodaj *:nth-child(3) { width: 403px; }
+.zarzadzanieMiastamiDodaj *:nth-child(3) { width: 381px; padding-right: 22px; }
+.zarzadzanieMiastami tr td:nth-child(4), .zarzadzanieMiastami table thead th:nth-child(4), .zarzadzanieMiastamiDodaj *:nth-child(4) { width: 414px; }
+.zarzadzanieMiastami tr td:nth-child(5), .zarzadzanieMiastami table thead th:nth-child(5), .zarzadzanieMiastamiDodaj *:nth-child(5) { width: calc(100% - 1032px); }
+.zarzadzaniePromamiDodaj * { flex-grow: 1; }
+.zarzadzaniePromamiDodaj select { width: 33px; border: 1px solid #111; text-align: left; }
+.zarzadzaniePromamiDodaj option { background: #222; text-align: left; }
+.zarzadzanieMiastamiDodaj button, .zarzadzaniePromamiDodaj button { color: dodgerblue; font-weight: bold; cursor: pointer; transition: all .4s ease;}
+.zarzadzanieMiastamiDodaj button:hover, .zarzadzaniePromamiDodaj button:hover { color: orange; letter-spacing: 4px; }
+.rekrutacja { width: 100%; height: 100%;}
+.rekrutacja table { width: 100%; border-collapse: collapse; text-align: center; }
+.rekrutacja tr td, .rekrutacja tr th { padding: 15px; letter-spacing: 1px; background: #1c1c1c; }
+.rekrutacja tr th { background: #111; }
+.rekrutacja tr:nth-child(even) td { background: #181818; }
+.rozpatrzRekrutacje { position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: #111; animation: wejscieSmooth .8s ease; display: flex; padding: 20px; gap: 40px; flex-direction: column;}
+.rekrutacjaWiersz { display: flex; gap: 20px; justify-content: center; }
+.rekrutacjaWiersz div { display: flex; flex-grow: 1; flex-direction: column; text-align: center; gap: 10px; }
+.rekrutacjaWiersz div *:nth-child(1) { font-weight: bold; }
+.rekrutacjaWiersz textarea { background: #212121; color: #fff; padding: 10px; resize: none; text-align: justify; height: 150px; width: 80%; margin: 0 auto; box-shadow: 0 0 15px 0 #000; font-size: 0.85rem; font-weight: 500; letter-spacing: 1px; outline: none; border: 2px solid white; }
+.rekrutacjaWiersz button {padding: 10px; font-weight: bold; background: orange; box-shadow: 0 0 10px 0 #000; letter-spacing: 1px; border: none; font-size: 0.9rem; cursor: pointer; transition: all .4s ease; }
+.rekrutacja tr td button { padding: 10px; border: none; color: #fff; background: dodgerblue; font-weight: bold; letter-spacing: 1px; cursor: pointer; transition: all .4s ease; }
+.rekrutacja tr td button:hover { letter-spacing: 3px;}
+.rekrutacjaWiersz button:hover { letter-spacing: 3px; }
+.rekrutacjaWiersz button:nth-child(2) { background: crimson; }
+.rekrutacjaWiersz button:nth-child(3) { background: #066c06; }
+.bladRekrutacja { position: fixed; background: rgba(0,0,0,0.5); left: 0; top: 0; width: 100%; height: 100vh; display: flex; justify-content: center; align-items: center; padding-left: 60px; cursor: pointer;}
+.bladRekrutacja span { display: block; max-width: 600px; letter-spacing: 1px; color: crimson; font-weight: bold; font-size: 1.1rem; text-align: center;}
+.uprStanKontaFirmy { 
+	position: absolute;
+    right: 0;
+    top: 100%;
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    background: #131313;
+    border-radius: 0 0 10px 10px;
+}
+.statKontoFirmowe { 
+	display: block;
+    position: absolute;
+    right: 5px;
+    font-size: 0.85rem;
+    top: 5px;
+    text-align: right;
+}
+.uprTable select.uprWybierane optgroup option { display: block; visibility: visible;}
+.uploadZdjeciaNie, .uploadZdjeciaTak {
+	margin-top: 15px; width: 100%; display: block;
+	padding: 10px; border-radius: 10px; font-size: 0.9rem; text-shadow: 1px 1px 3px #000; cursor: pointer !important; font-weight: bold; transition: all .4s ease;
+	background: goldenrod; color: #fff; text-align: center;
+}
+.uploadZdjeciaNie:hover, .uploadZdjeciaTak:hover { letter-spacing: 1px;}
+.uploadZdjeciaTak { background: #066c06; }
+.formularzTrasy label.uploadZdjeciaNie { background: #424242; font-size: 0.75rem; }
+.formularzTrasy label.uploadZdjeciaTak { background: #2c950a; font-size: 0.75rem; }
+@keyframes popupTrasyFade {
+	0% { opacity: 0; }
+	10% { opacity: 1; }
+	90% { opacity: 1;}
+	100% { opacity: 0;}
+}
+.uprawnieniaZakladki {
+	position: absolute;
+	bottom: 100%;
+	left: 0;
+	display: flex;
+	gap: 10px;
+	margin-left: 10px;
+}
+.uprawnieniaZakladka {
+	padding: 10px 15px 6px;
+    background: #292929;
+    box-shadow: 0 0 10px 0 #000;
+    border-radius: 15px 15px 0 0;
+    font-size: 0.9rem;
+    color: #e1e1e1;
+    letter-spacing: 1px;
+    font-weight: bold;
+    text-shadow: 1px 1px 3px #111;
+    border: 1px solid grey;
+    border-bottom: none;
+	user-select: none;
+	cursor: pointer;
+	transition: all .4s ease;
+}
+.uprawnieniaOkno { 
+	min-height: 560px;
+    max-height: 700px;
+	height: 600px;
+}
+.uprawnieniaZakladka:hover { background: #181818; }
+.uprawnieniaZakladka.uprawnieniaZakladkaAktywna { background: #dc143c; letter-spacing: 2px; }
+.uprawnieniaNadawanie {
+	padding: 35px; 
+	display: flex;
+    flex-direction: column;
+    height: 100%;
+	animation: wejscieSmooth 1s ease;
+}
+.uprawnieniaNadawanieGora { display: flex; margin-bottom: 30px; gap: 40px; justify-content: space-between; align-items: flex-end; }
+.uprawnieniaNadawanieGoraCol { flex-grow: 1; }
+.uprawnieniaNadawanieGoraCol h3 { margin-bottom: 6px; }
+.uprawnieniaNadawanieGoraLewa { display: flex; gap: 30px; }
+.uprawnieniaNadawanieGoraPrawa { display: flex; flex-direction: column; align-items: end; }
+.uprawnieniaNadawanieGoraCol select, .uprawnieniaNadawanieGoraCol option { padding: 10px 15px; font-size: 1.1rem; font-weight: bold; appearance: none; width: 100%; }
+.uprawnieniaNadawanieGoraCol select option:first-child { display: none; visibility: none; }
+.uprawnieniaFirma {
+	position: absolute;
+    bottom: 100%;
+    right: 0;
+    background: #1e1e1e;
+    padding: 10px 15px 6px;
+    border-radius: 15px 15px 0 0;
+    text-align: center;
+    border: 1px solid grey;
+    border-bottom: none;
+}
+.uprawnieniaNadawaniePrzycisk {
+	background: orangered;
+	padding: 10px 15px;
+    font-weight: bold;
+    color: #ddd;
+    letter-spacing: 1px;
+    box-shadow: 0 0 6px 0 #000;
+    cursor: pointer;
+	transition: all .4s ease;
+}
+.uprawnieniaNadawaniePrzycisk:hover {
+	letter-spacing: 2px;
+}
+.uprawnieniaNadawanieGoraOpcja {
+	position: relative;
+	padding: 10px 15px; font-size: 1.1rem; font-weight: bold;
+	background: #454545;
+    color: #e5e5e5;
+    text-align: left;
+    min-width: 250px;
+	user-select: none;
+	cursor: pointer;
+}
+.uprawnieniaNadawanieGoraRozwijane, .uprawnieniaNadawanieGoraRozwijane2 {
+	position: absolute;
+	top: 100%;
+	width: 100%;
+	left: 0;
+	z-index: 6;
+}
+.uprawnieniaNadawanieGoraRozwijane div, .uprawnieniaNadawanieGoraRozwijane2 div {
+	padding: 6px 15px;
+	background: #bbbbbb;
+    color: #222;
+	text-shadow: 1px 1px 3px #666;
+	transition: all .4s ease;
+}
+.uprawnieniaNadawanieGoraRozwijane2 div { background: #222; color: #bbb; }
+.uprawnieniaNadawanieGoraRozwijane div:hover, .uprawnieniaNadawanieGoraRozwijane2 div:hover {
+	letter-spacing: 1px;
+	background: #8d8d8d;
+}
+.uprawnieniaNadawanieGoraRozwijane div:nth-child(even) { 
+	background: #eee;
+}
+.uprawnieniaNadawanieGoraRozwijane2 div:nth-child(even) { background: #414141; }
+.uprawnieniaNadawanieGoraRozwijane div:nth-child(even):hover, .uprawnieniaNadawanieGoraRozwijane2 div:nth-child(even):hover {
+	background: #d7d7d7;
+}
+
+.uprawnieniaNadawanieAvatar { 
+	width: 30px;
+	height: 30px;
+	border-radius: 25%;
+	background-size: cover;
+	background-position: center center;
+}
+.uprawnieniaNadawanieDol {
+	width: 100%;
+	border-collapse: collapse;
+	text-align: left;
+	display: flex;
+    flex-wrap: wrap;
+    gap: 20px 20px;
+    flex-direction: row;
+    align-items: flex-start;
+}
+.uprawnieniaCennik tr td, .uprawnieniaCennik tr th { padding: 8px 10px; font-weight: bold; text-align: center; border: 1px solid #666; }
+.uprawnieniaNadawanieDol { overflow-y: auto; flex-grow: 1; padding: 15px; margin: 0 -15px; }
+table.uprawnieniaCennik { width: 100%; border-collapse: collapse; height: 100%; border: none; animation: wejscieSmooth 1s ease; }
+.uprawnieniaCennik tr td {
+	background: #bfbfbf;
+    color: #111;
+	border: 1px solid #dfdfdf;
+}
+.uprawnieniaCennik tr:nth-child(even) td { background: #b3b3b3; }
+.uprawnieniaCennik tr:nth-child(even) td:nth-child(even) { background: #bfbfbf; }
+.uprawnieniaCennik tr td:nth-child(even) { background: #b3b3b3; }
+.uprawnieniaCennik tbody tr:nth-child(even) th { background: #444;}
+.uprawnieniaCennik tbody tr:nth-child(11) th { background: #111; color: #b7b7b7; }
+.uprawnieniaCennik tbody tr th { background: #333; color: #cbcbcb; letter-spacing: 1px; text-shadow: 1px 1px 3px #111; }
+.uprBox {
+	position: relative;
+	display: flex;
+    flex-direction: column;
+    background: #373737;
+    color: #ddd;
+    max-width: 300px;
+    width: -moz-fit-content;
+    width: fit-content;
+    min-width: 240px;
+    border-radius: 12px;
+    box-shadow: 0 0 8px 0 #0c0c0c;
+    border: 2px solid #111;
+	z-index: 5;
+	height: 150px;
+	flex-grow: 1;
+}
+.uprBoxError {
+	position: absolute;
+    background: #ed143dc7;
+    color: #eee;
+    padding: 10px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* height: 100%; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 6;
+    bottom: -30px;
+    border-radius: 12px;
+    backdrop-filter: blur(3px);
+	text-align: center;
+	animation: popupTrasyFade 2500ms ease forwards;
+}
+.uprBox input, .uprBox select { border:none; outline: none; background: transparent; text-align: center; font-size: 0.9rem; color: inherit; appearance: none; }
+.uprBoxGora {
+	display: flex;
+    align-items: center;
+    height: 70px;
+    background: #c7c7c7;
+    color: #222;
+    font-weight: bold;
+    border-radius: 12px 12px 0 0;
+}
+.uprBoxGora2 {
+	display: flex;
+    flex-direction: column;
+    height: 100%;
+    flex-grow: 1;
+}
+.uprBoxGra {
+	position: relative;
+	width: 60px;
+    display: block;
+    height: 60px;
+    margin: 5px;
+    background-size: cover;
+    background-position: center center;
+}
+div.uprBox .uprBoxLine { 
+	flex-grow: 1;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 10px;
+    border-bottom: 1px solid #555;
+    font-weight: bold;
+}
+.uprBoxGora .uprBoxLine:nth-child(2) { border-bottom: none; }
+.uprBox .uprBoxLine:nth-child(2) { border-bottom: none; }
+.uprBoxPrzycisk {
+	position: absolute;
+    padding: 3px 20px 6px;
+    background: #034f0a;
+    color: #ccc;
+    cursor: pointer;
+    transition: all .4s ease;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 3px #333;
+    border-radius: 0 0 12px 12px;
+}
+.uprBox:hover .uprBoxPrzycisk { opacity: 1; }
+.uprWybierzGre {
+	left: 0;
+    position: absolute;
+    top: 0;
+    height: 70px;
+    width: 210px;
+    display: flex;
+    margin: -5px;
+	transition: opacity .4s ease;
+	background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(3px);
+}
+.uprWybierzGreWybor {
+	height: 70px;
+    width: 70px;
+	cursor: pointer;
+	transition: transform .4s ease;
+}
+.uprWybierzGreWybor:nth-child(1) { z-index: 13; }
+.uprWybierzGreWybor:nth-child(2) { z-index: 12; transform: translateX(-70px); }
+.uprWybierzGreWybor:nth-child(3) { z-index: 11; transform: translateX(-140px); }
+.uprawnieniaHistoria {
+	width: 100%;
+	height: 100%;
+	overflow-y: auto;
+    animation: wejscieSmooth 1s ease;
+	position: relative;
+}
+.uprawnieniaHistoria table { width: 100%; border-collapse: collapse; }
+.uprawnieniaHistoria table thead { position: sticky; top: 0; background: #181818; padding: 10px; }
+.uprawnieniaHistoria table tr td, .uprawnieniaHistoria table tr th {
+	padding: 10px;
+    background: #252525;
+    color: #adadad;
+    font-weight: bold;
+	transition: all .4s ease;
+}
+.uprawnieniaHistoria table tr:nth-child(even) td { background: #2f2f2f; }
+.uprawnieniaHistoria table tr th { background: #0c0c0c; color: #eee; }
+.uprawnieniaHistoria table tr td:nth-child(4),
+.uprawnieniaHistoria table tr td:nth-child(5), 
+.uprawnieniaHistoria table tr td:nth-child(6),
+.uprawnieniaHistoria table tr th:nth-child(4),
+.uprawnieniaHistoria table tr th:nth-child(5), 
+.uprawnieniaHistoria table tr th:nth-child(6) {
+	text-align: center;
+}
+.uprawnieniaHistoria table tr td:nth-child(7),
+.uprawnieniaHistoria table tr th:nth-child(7) { text-align: right;}
+.uprawnieniaHistoria table tr:hover td { background: #1c1c1c; }
+.uprawnieniaHistoria table tr td:nth-child(2) a { display: flex; gap: 10px; align-items: center; height: 100%; width: 100%; }
+.uprawnieniaHistoria table tr td:nth-child(2) a img { height: 40px; width: 40px; border-radius: 25%; }
+.potwierdzenieUsuwaniaUpr {
+	position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 5;
+    right: 0;
+    height: 100%;
+    background: #00000082;
+    backdrop-filter: blur(5px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: #eee;
+}
+.potwierdzenieUsuwaniaUpr button {
+	padding: 10px 15px;
+    background: orangered;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 3px #111;
+    margin: 0 15px;
+	transition: all .4s ease;
+}
+.potwierdzenieUsuwaniaUpr button:nth-child(2) { background: green; }
+.potwierdzenieUsuwaniaUpr button:hover { background: crimson; letter-spacing: 2px;}
+.uprUsunPrzycisk {
+	border: none;
+    padding: 6px 10px;
+    font-weight: bold;
+    background: crimson;
+    color: #2f2f2f;
+    text-transform: uppercase;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all .4s ease;
+    box-shadow: 0 0 10px 0 #111;
+}
+.uprUsunPrzycisk:hover {
+	background: orangered;
+}
+.uprBoxLine option {
+	background: #412c24;
+    color: #e7e7e7;
+    font-size: 1rem;
+    font-weight: bold;
+}
+.uprBoxLine option:nth-child(1) { visibility: hidden; display: none; }
