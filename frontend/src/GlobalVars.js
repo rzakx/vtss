@@ -1,5 +1,5 @@
 const GlobalVars = {
-    'backendIP': "https://api-vtss.rzak.pl/"
+    'backendIP': "https://vtss-api.zakrzewski.dev/"
 }
 
 export default GlobalVars;

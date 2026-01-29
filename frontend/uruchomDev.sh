@@ -1,0 +1,1 @@
+screen -dmS "devSpedycja" npm run dev

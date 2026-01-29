@@ -33,6 +33,10 @@ const commands = [
 	{
 		name: "cennik",
 		description: "Wyświetla cennik uprawnień w systemie"
+	},
+	{
+		name: "rekrutacja",
+		description: "Generuje kod zwrotny dla zgłoszenia rekrutacyjnego"
 	}
 ];
 

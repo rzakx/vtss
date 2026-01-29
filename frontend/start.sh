@@ -1,2 +1,2 @@
-screen -dmS "frontendSpedycja" npm start
-screen -r frontendSpedycja
+screen -dmS "vtssFrontend" npm start
+screen -r vtssFrontend
