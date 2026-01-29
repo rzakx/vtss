@@ -18,7 +18,7 @@ dotenv.config();
 import zlib from "node:zlib";
 import { Server } from "socket.io";
 import { ActivityType, EmbedBuilder, Client, Events, Collection, GatewayIntentBits, MessageFlags } from 'discord.js';
-const io = new Server(2139, {
+const io = new Server(2140, {
 	cors: {
 		origin: "*",
 		methods: ["GET", "POST"],
